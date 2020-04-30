@@ -11,7 +11,7 @@ LDFLAGS = -L/scratch/perkins/lib
 LDLIBS = -lcdk -lcurses
 
 # Executable Name
-EXECFILE = cdkexample
+EXECFILE = CDKMatrix
 
 # Auto include all .cc files
 SOURCES := $(wildcard *.cc)
@@ -24,7 +24,7 @@ PROJECTNAME = HW6
 all: $(EXECFILE)
 
 clean:
-	rm -f $(OBJS) $(EXECFILE) *~ \#*
+	rm -f $(OBJS) $(EXECFILE) *~ \#* $(EXECFILE)
 
 
 $(EXECFILE): $(OBJS)
