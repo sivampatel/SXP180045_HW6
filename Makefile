@@ -1,8 +1,18 @@
-#
-# UTD CS3377 CDK Example
-# Dr. Perkins
-# stephen.perkins@utdallas.edu
-#
+#!/usr/bin/make -f                                                                                                                                                                                         
+#                                                                                                                                                                                                          
+# Filename:             Makefile                                                                                                                                                                           
+# Date:                 4/30/2020                                                                                                                                                                          
+# Author:               Sivam Patel                                                                                                                                                                        
+# Email:                sxp180045@utdallas.edu                                                                                                                                                             
+# Version:              1.0                                                                                                                                                                                
+# Copyright:            202, All Rights Reserved                                                                                                                                                           
+#                                                                                                                                                                                                          
+# Description:                                                                                                                                                                                             
+#                                                                                                                                                                                                          
+#       Make file to build assignment6. It will take all the files and                                                                                                                                     
+#       individually compile them. Also includes the needed libraries from 
+#       /scratch/perkins.
+# 
 
 CXX = g++
 CXXFLAGS =

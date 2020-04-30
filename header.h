@@ -1,3 +1,17 @@
+/*                                                                                                                                                                                                         
+ * header.h
+ * 4/30/2020                                                                                                                                                                                               
+ * Sivam Patel                                                                                                                                                                                             
+ * sxp180045@utdallas.edu                                                                                                                                                                                  
+ * CS 3377.501 Spring 2020                                                                                                                                                                                 
+ * 1.0                                                                                                                                                                                                     
+ * 2020, All Rights Reserved                                                                                                                                                                               
+ *                                                                                                                                                                                                         
+ * Description                                                                                                                                                                                            
+ *                                                                                                                                                                                                        
+ *     Header file. Contains the BinaryFileHeader and BinaryFileRecord classes.
+ */
+
 #include <stdint.h>
 
 class BinaryFileHeader
