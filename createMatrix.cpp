@@ -107,7 +107,7 @@ void createMatrix()
       // read data into record
       binaryFile.read((char *) record, sizeof(BinaryFileRecord));
       // convert string length to string
-      ss << (int)record->strLength;
+      ss << "strlen: " << (int)record->strLength;
       // insert data into matrix
       setCDKMatrixCell(myMatrix, x, 1, ss.str().c_str());
       setCDKMatrixCell(myMatrix, x, 2, record->stringBuffer);
