@@ -56,8 +56,9 @@ int main()
   // char * placeholder = new char[maxRecordStringLength];
   ifstream binaryFile("/scratch/perkins/cs3377.bin", ios::in | ios::binary);
   BinaryFileHeader *head = new BinaryFileHeader();
-  binaryFile.read((char*)head ,sizeof(BinaryFileHeader));
-  std::cout << head->magicNumber << " " << head->versionNumber << " " << head->numRecords<< std::endl;
+  binaryFile.read((char*)head ,sizeOf(BinaryFileHeader);
+  std::cout << head->magicNumber
+<< std::endl;
   sleep(100);
   
   /* Display the Matrix */
