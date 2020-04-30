@@ -78,6 +78,9 @@ ss << "NumRecords: " << head->numRecords;
   setCDKMatrixCell(myMatrix, 1, 3, ss.str().c_str());
 
   //  sleep(15);
+  int maxRecords = (int)head->numRecords;
+  if(maxRecords > 4)
+    maxRecords = 4;
   for(int x = 2; x < (int)head->numRecords + 2; x++)
     {
       ss.str(std::string());
