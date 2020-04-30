@@ -14,8 +14,8 @@ LDLIBS = -lcdk -lcurses
 EXECFILE = CDKMatrix
 
 # Auto include all .cc files
-SOURCES := $(wildcard *.cc)
-OBJS = $(SOURCES:.cc=.o)
+SOURCES := $(wildcard *.cpp)
+OBJS = $(SOURCES:.cpp=.o)
 
 PROJECTNAME = HW6
 
