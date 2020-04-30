@@ -8,10 +8,11 @@
 #include "cdk.h"
 #include "header.h"
 #include <fstream>
+#include <sstream>
 
 #define MATRIX_WIDTH 5
 #define MATRIX_HEIGHT 3
-#define BOX_WIDTH 15
+#define BOX_WIDTH maxRecordStringLength
 #define MATRIX_NAME_STRING "My Matrix"
 
 using namespace std;
@@ -19,7 +20,6 @@ using namespace std;
 
 int main()
 {
-
   WINDOW	*window;
   CDKSCREEN	*cdkscreen;
   CDKMATRIX     *myMatrix;           // CDK Screen Matrix
@@ -53,22 +53,51 @@ int main()
       _exit(1);
     }
 
-  // char * placeholder = new char[maxRecordStringLength];
-  ifstream binaryFile("/scratch/perkins/cs3377.bin", ios::in | ios::binary);
+
+  /* Display the Matrix */
+  //  drawCDKMatrix(myMatrix, true);
+
+  ifstream binaryFile;
+  binaryFile.open("/scratch/perkins/cs3377.bin", ios::in | ios::binary);
   BinaryFileHeader *head = new BinaryFileHeader();
   binaryFile.read((char*)head ,sizeof(BinaryFileHeader));
-  std::cout << head->magicNumber << " " << head->versionNumber << " " << head->numRecords<< std::endl;
-  sleep(100);
+  std::cout << head->magicNumber << " version:" << head->versionNumber << " " << head->numRecords<< std::endl;
+  std::stringstream st;
+  //  sleep(100);
+  st << "Magic: 0x" << hex << uppercase << head->magicNumber;  
+  setCDKMatrixCell(myMatrix, 1, 1, st.str().c_str());
+  st.str(std::string());
+  stringstream ss;
   
-  /* Display the Matrix */
+ss << "Version: " << (int)head->versionNumber;
+  std::cout << ss.str() << std::endl;
+  setCDKMatrixCell(myMatrix, 1, 2, ss.str().c_str());
+  ss.str(std::string());
+  
+ss << "NumRecords: " << head->numRecords;
+  setCDKMatrixCell(myMatrix, 1, 3, ss.str().c_str());
+
+  //  sleep(15);
+  for(int x = 2; x < (int)head->numRecords + 2; x++)
+    {
+      ss.str(std::string());
+      BinaryFileRecord *record = new BinaryFileRecord();
+      binaryFile.read((char *) record, sizeof(BinaryFileRecord));
+      ss << (int)record->strLength;
+      std::cout << ss.str() << std::endl;
+      //      sleep(10);
+      setCDKMatrixCell(myMatrix, x, 1, ss.str().c_str());
+      setCDKMatrixCell(myMatrix, x, 2, record->stringBuffer);
+      delete record;
+    }
+  
   drawCDKMatrix(myMatrix, true);
-  setCDKMatrixCell(myMatrix, 2, 1, "New Test Message");
 
   /*
    * Dipslay a message
    */
-  setCDKMatrixCell(myMatrix, 2, 2, "Test Message");
-  drawCDKMatrix(myMatrix, true);    /* required  */
+  //setCDKMatrixCell(myMatrix, 2, 2, "Test Message");
+  //drawCDKMatrix(myMatrix, true);    /* required  */
 
   /* so we can see results */
   sleep (10);
